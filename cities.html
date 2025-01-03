@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cities Information - ARsolutions</title>
+    <link rel="stylesheet" href="cities-style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>City Information</h1>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search for a city..." onkeyup="searchCity()">
+            <select id="city-dropdown" onchange="highlightCity()">
+                <option value="">-- Select a City --</option>
+                <option value="New York">New York</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="London">London</option>
+                <option value="Tokyo">Tokyo</option>
+                <option value="Paris">Paris</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Sydney">Sydney</option>
+                <option value="Dubai">Dubai</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Barcelona">Barcelona</option>
+            </select>
+        </div>
+        <div id="city-list">
+            <div class="city" data-name="New York">
+                <h2>New York</h2>
+                <p>The city that never sleeps, known for its iconic skyline and Times Square.</p>
+            </div>
+            <div class="city" data-name="Los Angeles">
+                <h2>Los Angeles</h2>
+                <p>The entertainment capital of the world, home to Hollywood.</p>
+            </div>
+            <div class="city" data-name="London">
+                <h2>London</h2>
+                <p>The capital of England, famous for its history and landmarks like Big Ben.</p>
+            </div>
+            <div class="city" data-name="Tokyo">
+                <h2>Tokyo</h2>
+                <p>The bustling capital of Japan, known for its modernity and tradition.</p>
+            </div>
+            <div class="city" data-name="Paris">
+                <h2>Paris</h2>
+                <p>The city of love, renowned for the Eiffel Tower and its art museums.</p>
+            </div>
+            <div class="city" data-name="Mumbai">
+                <h2>Mumbai</h2>
+                <p>The financial hub of India, known for Bollywood and its street food.</p>
+            </div>
+            <div class="city" data-name="Sydney">
+                <h2>Sydney</h2>
+                <p>Famous for the Sydney Opera House and its beautiful beaches.</p>
+            </div>
+            <div class="city" data-name="Dubai">
+                <h2>Dubai</h2>
+                <p>Known for luxury shopping, ultramodern architecture, and vibrant nightlife.</p>
+            </div>
+            <div class="city" data-name="Singapore">
+                <h2>Singapore</h2>
+                <p>A global financial hub with futuristic buildings and diverse culture.</p>
+            </div>
+            <div class="city" data-name="Barcelona">
+                <h2>Barcelona</h2>
+                <p>Known for its art, architecture, and the famous Sagrada Familia.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function searchCity() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const cities = document.querySelectorAll('.city');
+            cities.forEach(city => {
+                const cityName = city.getAttribute('data-name').toLowerCase();
+                city.style.display = cityName.includes(query) ? 'block' : 'none';
+            });
+        }
+
+        function highlightCity() {
+            const selectedCity = document.getElementById('city-dropdown').value;
+            const cities = document.querySelectorAll('.city');
+            cities.forEach(city => {
+                if (city.getAttribute('data-name') === selectedCity) {
+                    city.style.backgroundColor = '#ffff99'; // Highlight color
+                    city.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    city.style.backgroundColor = ''; // Reset color
+                }
+            });
+        }
+    </script>
+</body>
+</html>
